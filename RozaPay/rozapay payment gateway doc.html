@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+<!--<script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!--************* CSS Starts **************-->
+
+     <?php include('common/css.php'); ?>
+   <style>
+    b
+    {
+      font-weight:bold;
+    }
+    .bootstrap-select.btn-group:not(.input-group-btn), .bootstrap-select.btn-group[class*="span"]
+    {
+      margin-top:20px;
+    }
+   </style>
+     
+  <!--************* CSS ENDS *****************-->
+  
+</head>
+<body >
+
+<div class="body">
+
+    <!-- Site Header Wrapper -->
+    
+       <?php include('common/header.php'); ?>
+    
+    <!-- Hero Area -->
+    <div class="hero-area">
+      <div class="page-banner parallax" style="background-image:url(assets/front/images/parallax6.jpg);">
+          <div class="container">
+              <div class="page-banner-text">
+              <h1 class="block-title">Donate Online</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content -->
+    <div id="main-container">
+      <div class="content">
+          <div class="container">
+            <div class="row">
+          
+          <div class="col-md-12 col-sm-12">
+              <h2><?php echo $donateOnline[0]->title; ?></h2>
+            <hr class="sm">
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12">
+                              <div class="grid-item">
+                                    <div class="grid-item-content">
+                                        <div class="col-sm-8">
+                          <p><?php echo $donateOnline[0]->description; ?></p>
+                      </div>
+                                      <div class="col-sm-4">
+                                            <img src="<?php echo base_url() ?>assets/front/uploads/Content/<?php echo $donateOnline[0]->image; ?>" align="right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+          <div class="col-sm-12">
+            <p class="lead" style="margin-bottom:0px">
+                <strong>“<?php echo $donateOnline[1]->title; ?>.” </strong></p>
+          </div>
+          <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12">
+                              <div class="grid-item">
+                                    <div class="grid-item-content">
+                    <div class="col-sm-6">
+                      <p><?php echo $donateOnline[1]->description; ?></li>
+                    </ul>
+                    </div>  
+                    <div class="col-sm-6">
+                      <div class="well widget widget_volunteer_form">
+                        <?php
+                          if($this->session->flashdata('error')!='')
+                          {
+                        ?>
+                            <div class="alert alert-danger background-danger">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                              <?php echo $this->session->flashdata('error'); ?>
+                            </div>
+                                    
+                        <?php
+                          }
+                        
+                          if($this->session->flashdata('success')!='')
+                          {
+                        ?>
+                            <div class="alert alert-success background-success">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                              <?php echo $this->session->flashdata('success'); ?>
+                            </div>
+                                    
+                        <?php
+                          }
+                        ?>
+<!--<center>
+<div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_Ebi2cAazyKuOjc/view" data-text="Pay Now" data-color="#EFDE10" data-size="large">
+  <script>
+    (function(){
+      var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+      if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+      s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+      rzp && rzp.init && rzp.init()}})();
+  </script>
+</div>
+</center>-->
+               <form action="" method="POST" name="contactsForm" id="contactsForm">
+
+                          <h3 class="text-center">DONATE NOW </h3>
+                      <div class="row clearfix">
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                          <input type="text" name="name" class="form-control" placeholder="Enter Your Name" id="name" required>
+                        </div>
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                          <input type="email" name="email" class="form-control" placeholder="Enter Your Email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                          <input type="text" name="contact" class="form-control" placeholder="Enter Your Contact No." id="contact" required>
+                        </div>
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                          <input type="text" name="location" class="form-control" placeholder="Enter Your Location" id="location" required>
+                        </div>
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                          <input type="text" name="amount" pattern="\d*" class="form-control" placeholder="Enter Your Amount" id="amount" required>
+                        </div>
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                          <textarea name="message" class="form-control" placeholder="Enter Your message (if any)"></textarea>
+                        </div>
+                        
+
+                     <!--<div class="form-group col-md-12 col-sm-12 col-xs-12 text-center">
+                          <button id="payonline"  name="submit1" class="btn btn-primary">Pay Now</button>
+                          
+                        </div>-->
+                        <input type="hidden" name="payamt" value="" id="payamt">
+ <input type="hidden" name="username" value="" id="username">
+ <input type="hidden" name="email" value="" id="email">
+ <input type="hidden" name="contact" value="" id="contact">
+
+                        
+                      </div>
+
+
+<input type="hidden" custom="Hidden Element" name="hidden">
+
+</form>
+
+<center>
+<button id="rzp-button1" style="background-color:black;color:white;padding:12px;">Pay with Razorpay</button></center>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+
+</script>
+
+
+<script>
+    
+       $("button").click(
+    function() {
+        console.log("clicked...waiting...");
+
+        setTimeout(
+            function() {
+                var amount = $('#payamt').val();
+var username =  $('#username').val();
+var email =  $('#email').val();
+var contact =  $('#contact').val();
+ 
+  
+  amount = amount*100;
+var options = {
+  "key": "rzp_test_mjMoeiAoCIGuKR",
+  "amount": amount, // 2000 paise = INR 20
+  "name": "nyfindia org",
+  "description": "National youth foundation",
+  "image": "http://nyfindia.org/assets/front/uploads/logo/67e384002e7b9cc944350bf9e8472276.png",
+  "handler": function (response){
+      
+      window.location = 'http://nyfindia.org/payment-success?payment_id=' + response.razorpay_payment_id;
+  },
+  "prefill": {
+      "name": username,
+      "email": email,
+      "contact": contact
+  },
+  "notes": {
+    "address": "Hello World"
+  },
+  "theme": {
+    "color": "#F37254"
+  }
+};
+
+var rzp1 = new Razorpay(options);
+ rzp1.open();
+
+            },
+            1000);
+    }); 
+ 
+</script> 
+
+
+
+                  
+                      </div>
+                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+      
+        </div>
+    </div>
+
+<!-- Site Footer -->
+    
+    <!--************* FOOTER Starts **************-->
+
+        <?php include('common/footer.php'); ?>
+
+    <!--************* FOOTER ENDS *****************-->
+    
+</div>
+
+<!--************* SCRIPT Starts **************-->
+<script>
+
+  $("#amount").blur(function(){
+
+    var amt = $(this).val();
+    $('#payamt').val(amt);
+    //alert(amt);
+});
+
+  $("#name").blur(function(){
+
+    var name= $(this).val();
+    $('#username').val(name);
+    //alert(amt);
+});
+
+
+  $("#email").blur(function(){
+
+    var email= $(this).val();
+    $('#email').val(email);
+    //alert(amt);
+});
+
+
+  $("#contact").blur(function(){
+
+    var contact= $(this).val();
+    $('#contact').val(contact);
+    //alert(amt);
+});
+
+
+
+
+    $( "#payonline1" ).click(function() {
+        alert("ok");
+        $.ajax({ 
+            url: 'pay_now_razor',
+            data: {},
+            type: 'post'
+        }).done(function(responseData) {
+            alert(responseData);
+            console.log('Done: ', responseData);
+        }).fail(function() {
+            console.log('Failed');
+        });
+        
+    
+        
+   e.preventDefault();
+});
+</script>
+   <?php include('common/js.php'); ?>
+   
+   <script>
+    function gotodiv()
+    {
+    $('html,body').animate({
+        scrollTop: $("#internship_application").offset().top - 160},
+        'slow');
+    }
+   </script>
+   
+
+
+<!--************* SCRIPT ENDS *****************-->
+
+</body>
+</html>
